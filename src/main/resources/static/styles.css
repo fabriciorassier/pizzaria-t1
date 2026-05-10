@@ -1,0 +1,50 @@
+:root {
+    --bg: #1a1a2e;
+    --card: #16213e;
+    --accent: #e94560;
+    --text: #eaeaea;
+}
+
+body {
+    background: radial-gradient(circle at top left, #22284a, var(--bg));
+    color: var(--text);
+    min-height: 100vh;
+}
+
+.navbar, .card {
+    background-color: var(--card);
+    border: 1px solid rgba(233, 69, 96, 0.3);
+}
+
+.brand-accent {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.btn-pizza {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.btn-pizza:hover {
+    background-color: #cf3e57;
+    border-color: #cf3e57;
+    color: #fff;
+}
+
+.form-control, .form-control:focus {
+    background-color: #0f1730;
+    border-color: #33406d;
+    color: var(--text);
+}
+
+.list-group-item {
+    background-color: #13203d;
+    color: var(--text);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.link-light {
+    color: #ffd6de;
+}

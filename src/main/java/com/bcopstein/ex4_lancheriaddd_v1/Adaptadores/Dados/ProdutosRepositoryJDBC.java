@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import com.bcopstein.ex4_lancheriaddd_v1.Dominio.Dados.ProdutosRepository;
 import com.bcopstein.ex4_lancheriaddd_v1.Dominio.Dados.ReceitasRepository;
-import com.bcopstein.ex4_lancheriaddd_v1.Dominio.Entidades.Ingrediente;
 import com.bcopstein.ex4_lancheriaddd_v1.Dominio.Entidades.Produto;
 import com.bcopstein.ex4_lancheriaddd_v1.Dominio.Entidades.Receita;
 
@@ -63,7 +62,7 @@ public class ProdutosRepositoryJDBC implements ProdutosRepository {
                 return new Produto(produtoId, descricao, receita, preco);
             }
         );
-        return produtos.isEmpty() ? null : produtos.getFirst();        
+        return produtos.isEmpty() ? null : produtos.get(0);        
     }
     
 }

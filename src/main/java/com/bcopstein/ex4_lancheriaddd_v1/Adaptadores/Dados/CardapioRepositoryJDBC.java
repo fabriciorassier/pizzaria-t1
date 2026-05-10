@@ -1,7 +1,6 @@
 package com.bcopstein.ex4_lancheriaddd_v1.Adaptadores.Dados;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -35,10 +34,20 @@ public class CardapioRepositoryJDBC implements CardapioRepository{
         if (cardapios.isEmpty()) {
             return null;
         }
-        Cardapio cardapio = cardapios.getFirst();
+        Cardapio cardapio = cardapios.get(0);
         List<Produto> produtos = produtosRepository.recuperaProdutosCardapio(id);
         cardapio.setProdutos(produtos);
         return cardapio;
+    }
+
+    @Override
+    public Cardapio recuperaCorrente() {
+        String sql = "SELECT cardapio_id FROM cardapio_corrente WHERE id = 1";
+        List<Long> ids = jdbcTemplate.query(sql, (rs, rowNum) -> rs.getLong("cardapio_id"));
+        if (ids.isEmpty()) {
+            return null;
+        }
+        return recuperaPorId(ids.get(0));
     }
 
     @Override

@@ -3,7 +3,8 @@ create table if not exists clientes(
   nome varchar(100) not null,
   celular varchar(20) not null,
   endereco varchar(255) not null,
-  email varchar(255) not null
+  email varchar(255) not null unique,
+  senha varchar(255) not null default 'sem-senha'
 );
 
 create table if not exists ingredientes (
@@ -61,5 +62,34 @@ create table if not exists cardapio_produto (
   produto_id bigint not null,
   primary key (cardapio_id,produto_id),
   foreign key (cardapio_id) references cardapios(id),
+  foreign key (produto_id) references produtos(id)
+);
+
+create table if not exists cardapio_corrente(
+  id bigint default 1 primary key,
+  cardapio_id bigint not null,
+  foreign key (cardapio_id) references cardapios(id)
+);
+
+create table if not exists pedidos(
+  id bigint auto_increment primary key,
+  cliente_cpf varchar(15) not null,
+  status varchar(30) not null,
+  endereco_entrega varchar(255) not null,
+  data_pedido timestamp not null,
+  custo_itens double default 0,
+  desconto double default 0,
+  imposto double default 0,
+  custo_total double default 0,
+  foreign key (cliente_cpf) references clientes(cpf)
+);
+
+create table if not exists itens_pedido(
+  id bigint auto_increment primary key,
+  pedido_id bigint not null,
+  produto_id bigint not null,
+  quantidade int not null,
+  preco_unitario int not null,
+  foreign key (pedido_id) references pedidos(id),
   foreign key (produto_id) references produtos(id)
 );

@@ -1,7 +1,6 @@
 package com.bcopstein.ex4_lancheriaddd_v1.Dominio.Servicos;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +21,10 @@ public class CardapioService {
 
     public Cardapio recuperaCardapio(long Id){
         return cardapioRepository.recuperaPorId(Id);
+    }
+
+    public Cardapio recuperaCardapioCorrente() {
+        return cardapioRepository.recuperaCorrente();
     }
 
     public List<CabecalhoCardapio> recuperaListaDeCardapios(){

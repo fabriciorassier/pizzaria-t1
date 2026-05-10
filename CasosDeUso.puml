@@ -1,0 +1,47 @@
+@startuml CasosDeUso
+left to right direction
+skinparam actorStyle awesome
+skinparam packageStyle rectangle
+
+actor "Cliente" as C
+
+rectangle "Sistema Tele-Pizza" {
+    usecase "UC1: Registrar Cliente" as UC1
+    usecase "UC2: Autenticar" as UC2
+    usecase "UC3: Consultar Cardápio" as UC3
+    usecase "UC4: Submeter Pedido" as UC4
+    usecase "UC5: Verificar Status" as UC5
+    usecase "UC6: Cancelar Pedido" as UC6
+    usecase "UC7: Pagar Pedido" as UC7
+    usecase "UC8: Listar Pedidos\n(por período)" as UC8
+    usecase "UC9: Listar Pedidos\ndo Cliente" as UC9
+
+    usecase "Verificar Estoque\n(fake)" as VE
+    usecase "Calcular Imposto\n(10%)" as CI
+    usecase "Calcular Desconto\n(7% fidelidade)" as CD
+    usecase "Processar Pagamento\n(fake)" as PP
+    usecase "Simular Cozinha" as SC
+    usecase "Simular Entrega" as SE
+}
+
+C --> UC1
+C --> UC2
+C --> UC3
+C --> UC4
+C --> UC5
+C --> UC6
+C --> UC7
+C --> UC8
+C --> UC9
+
+UC4 ..> VE : <<include>>
+UC4 ..> CI : <<include>>
+UC4 ..> CD : <<include>>
+UC7 ..> PP : <<include>>
+UC7 ..> SC : <<include>>
+SC ..> SE : <<include>>
+
+note right of UC2 : Gera token (CPF em Base64)
+note right of UC4 : Retorna pedido aprovado\ncom custo calculado
+note right of UC7 : Simulação automática\nem background
+@enduml

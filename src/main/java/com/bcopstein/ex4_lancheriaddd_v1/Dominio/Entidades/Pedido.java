@@ -4,76 +4,112 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Pedido {
-    public enum Status {
-        NOVO,
-        APROVADO,
-        PAGO,
-        AGUARDANDO,
-        PREPARACAO,
-        PRONTO,
-        TRANSPORTE,
-        ENTREGUE
-    }
     private long id;
-    private Cliente cliente;
-    private LocalDateTime dataHoraPagamento;
+    private String clienteCpf;
+    private String enderecoEntrega;
+    private LocalDateTime dataPedido;
     private List<ItemPedido> itens;
-    private Status status;
-    private double valor;
-    private double impostos;
+    private String status;
+    private double custoItens;
     private double desconto;
-    private double valorCobrado;
+    private double imposto;
+    private double custoTotal;
 
-    public Pedido(long id, Cliente cliente, LocalDateTime dataHoraPagamento, List<ItemPedido> itens,
-            Pedido.Status status, double valor, double impostos, double desconto, double valorCobrado) {
+    public Pedido(long id, String clienteCpf, String status, String enderecoEntrega, LocalDateTime dataPedido,
+            List<ItemPedido> itens, double custoItens, double desconto, double imposto, double custoTotal) {
         this.id = id;
-        this.cliente = cliente;
-        this.dataHoraPagamento = dataHoraPagamento;
-        this.itens = itens;
+        this.clienteCpf = clienteCpf;
         this.status = status;
-        this.valor = valor;
-        this.impostos = impostos;
+        this.enderecoEntrega = enderecoEntrega;
+        this.dataPedido = dataPedido;
+        this.itens = itens;
+        this.custoItens = custoItens;
         this.desconto = desconto;
-        this.valorCobrado = valorCobrado;
+        this.imposto = imposto;
+        this.custoTotal = custoTotal;
+    }
+
+    public Pedido(String clienteCpf, String status, String enderecoEntrega, LocalDateTime dataPedido, List<ItemPedido> itens) {
+        this(0L, clienteCpf, status, enderecoEntrega, dataPedido, itens, 0.0, 0.0, 0.0, 0.0);
     }
 
     public long getId() {
         return id;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public LocalDateTime getDataHoraPagamento() {
-        return dataHoraPagamento;
+    public String getClienteCpf() {
+        return clienteCpf;
+    }
+
+    public void setClienteCpf(String clienteCpf) {
+        this.clienteCpf = clienteCpf;
+    }
+
+    public String getEnderecoEntrega() {
+        return enderecoEntrega;
+    }
+
+    public void setEnderecoEntrega(String enderecoEntrega) {
+        this.enderecoEntrega = enderecoEntrega;
+    }
+
+    public LocalDateTime getDataPedido() {
+        return dataPedido;
+    }
+
+    public void setDataPedido(LocalDateTime dataPedido) {
+        this.dataPedido = dataPedido;
     }
 
     public List<ItemPedido> getItens() {
         return itens;
     }
 
-    public Status getStatus() {
+    public void setItens(List<ItemPedido> itens) {
+        this.itens = itens;
+    }
+
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status){
+    public void setStatus(String status){
         this.status = status;
     }
 
-    public double getValor() {
-        return valor;
+    public double getCustoItens() {
+        return custoItens;
     }
 
-    public double getImpostos() {
-        return impostos;
+    public void setCustoItens(double custoItens) {
+        this.custoItens = custoItens;
     }
 
     public double getDesconto() {
         return desconto;
     }
 
-    public double getValorCobrado() {
-        return valorCobrado;
+    public void setDesconto(double desconto) {
+        this.desconto = desconto;
+    }
+
+    public double getImposto() {
+        return imposto;
+    }
+
+    public void setImposto(double imposto) {
+        this.imposto = imposto;
+    }
+
+    public double getCustoTotal() {
+        return custoTotal;
+    }
+
+    public void setCustoTotal(double custoTotal) {
+        this.custoTotal = custoTotal;
     }
 }
