@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bcopstein.ex4_lancheriaddd_v1.Dominio.Dados.PedidoRepository;
 import com.bcopstein.ex4_lancheriaddd_v1.Dominio.Dados.ProdutosRepository;
@@ -49,6 +50,7 @@ public class PedidoService {
         return new ItemPedido(produto.getId(), produto.getDescricao(), quantidade, produto.getPreco());
     }
 
+    @Transactional
     public Pedido submeterPedido(String cpfCliente, String enderecoEntrega, List<ItemPedido> itens) {
         /*
          * Fluxo UC4: valida itens, calcula custos, persiste pedido e move para APROVADO.
@@ -56,8 +58,9 @@ public class PedidoService {
         if (itens == null || itens.isEmpty()) {
             throw new IllegalArgumentException("Pedido precisa ter pelo menos um item");
         }
-        if (!estoqueService.verificarEstoque(itens)) {
-            throw new IllegalArgumentException("Estoque insuficiente");
+        List<String> faltas = estoqueService.detalharFaltas(itens);
+        if (!faltas.isEmpty()) {
+            throw new EstoqueInsuficienteException("Estoque insuficiente para alguns itens do pedido.", faltas);
         }
 
         double custoItens = calcularCustoItens(itens);
@@ -74,6 +77,7 @@ public class PedidoService {
         pedidoRepository.salvarItens(pedidoId, itens);
         pedidoRepository.atualizarCustos(pedidoId, custoItens, desconto, imposto, custoTotal);
         pedidoRepository.atualizarStatus(pedidoId, StatusPedido.APROVADO);
+        estoqueService.baixarEstoque(itens);
 
         return pedidoRepository.buscarPorId(pedidoId);
     }
@@ -103,6 +107,7 @@ public class PedidoService {
             throw new IllegalArgumentException("Pedido precisa estar APROVADO para pagar");
         }
         if (!pagamentoService.processarPagamento(pedidoId)) {
+            pedidoRepository.atualizarStatus(pedidoId, StatusPedido.ABANDONADO);
             throw new IllegalArgumentException("Pagamento nao aprovado");
         }
         pedidoRepository.atualizarStatus(pedidoId, StatusPedido.PAGO);

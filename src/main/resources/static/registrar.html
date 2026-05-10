@@ -1,0 +1,43 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Criar conta - Pizzaria Forno</title>
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="nav"></nav>
+<div class="auth-wrap">
+  <form class="auth-card" id="registerForm" novalidate>
+    <div class="brand"><img class="brand-logo" src="img/logo.svg" alt="Logo"> Pizzaria Forno</div>
+    <h1>Criar uma conta</h1>
+    <p class="sub">Leva menos de um minuto</p>
+
+    <div class="row">
+      <div class="field"><label for="nome">Nome completo</label>
+        <input class="input" id="nome" required maxlength="120" placeholder="Ex: Joao da Silva"></div>
+      <div class="field"><label for="cpf">CPF</label>
+        <input class="input" id="cpf" required maxlength="20" placeholder="Ex: 123.456.789-09"></div>
+    </div>
+    <div class="row">
+      <div class="field"><label for="celular">Celular</label>
+        <input class="input" id="celular" required maxlength="20" placeholder="Ex: (51) 99999-9999"></div>
+      <div class="field"><label for="email">E-mail</label>
+        <input class="input" id="email" type="email" required maxlength="160" placeholder="nome@exemplo.com"></div>
+    </div>
+    <div class="field"><label for="endereco">Endereco</label>
+      <input class="input" id="endereco" required maxlength="200" placeholder="Ex: Rua das Flores, 100, Centro"></div>
+    <div class="field"><label for="senha">Senha</label>
+      <input class="input" id="senha" type="password" required minlength="4" maxlength="64" placeholder="Minimo de 4 caracteres"></div>
+
+    <button class="btn btn-primary btn-block" id="submitBtn" type="submit">Criar conta</button>
+    <p class="alt">Ja tem conta? <a href="login.html">Entrar</a></p>
+  </form>
+</div>
+
+<script src="js/scripts.js"></script>
+</body>
+</html>
+

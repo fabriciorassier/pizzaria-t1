@@ -6,11 +6,20 @@ public class StatusPedidoResponse {
     private long pedidoId;
     private String status;
     private LocalDateTime dataAtualizacao;
+    private double custoItens;
+    private double desconto;
+    private double imposto;
+    private double custoTotal;
 
-    public StatusPedidoResponse(long pedidoId, String status, LocalDateTime dataAtualizacao) {
+    public StatusPedidoResponse(long pedidoId, String status, LocalDateTime dataAtualizacao,
+            double custoItens, double desconto, double imposto, double custoTotal) {
         this.pedidoId = pedidoId;
         this.status = status;
         this.dataAtualizacao = dataAtualizacao;
+        this.custoItens = custoItens;
+        this.desconto = desconto;
+        this.imposto = imposto;
+        this.custoTotal = custoTotal;
     }
 
     public long getPedidoId() {
@@ -23,5 +32,21 @@ public class StatusPedidoResponse {
 
     public LocalDateTime getDataAtualizacao() {
         return dataAtualizacao;
+    }
+
+    public double getCustoItens() {
+        return custoItens;
+    }
+
+    public double getDesconto() {
+        return desconto;
+    }
+
+    public double getImposto() {
+        return imposto;
+    }
+
+    public double getCustoTotal() {
+        return custoTotal;
     }
 }

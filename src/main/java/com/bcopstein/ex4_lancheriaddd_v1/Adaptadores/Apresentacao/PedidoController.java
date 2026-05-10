@@ -25,6 +25,7 @@ import com.bcopstein.ex4_lancheriaddd_v1.Aplicacao.TokenUtil;
 import com.bcopstein.ex4_lancheriaddd_v1.Aplicacao.Requests.SubmeterPedidoRequest;
 import com.bcopstein.ex4_lancheriaddd_v1.Aplicacao.Responses.ErroResponse;
 import com.bcopstein.ex4_lancheriaddd_v1.Aplicacao.Responses.StatusPedidoResponse;
+import com.bcopstein.ex4_lancheriaddd_v1.Dominio.Servicos.EstoqueInsuficienteException;
 
 @RestController
 @RequestMapping("/pedidos")
@@ -57,6 +58,8 @@ public class PedidoController {
         try {
             String cpf = TokenUtil.extrairCpf(authorizationHeader);
             return ResponseEntity.ok(submeterPedidoUC.run(cpf, request));
+        } catch (EstoqueInsuficienteException e) {
+            return ResponseEntity.badRequest().body(new ErroResponse(e.getMessage(), e.getDetalhes()));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(new ErroResponse(e.getMessage()));
         }

@@ -17,7 +17,9 @@ import org.springframework.test.web.servlet.MockMvc;
 @AutoConfigureMockMvc
 @TestPropertySource(properties = {
   "spring.datasource.url=jdbc:h2:mem:entrega1tests;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE",
-  "spring.sql.init.mode=always"
+  "spring.sql.init.mode=always",
+  "spring.sql.init.schema-locations=classpath:db/schema.sql",
+  "spring.sql.init.data-locations=classpath:db/data.sql"
 })
 public class TelePizzariaEntrega1IntegrationTests {
 

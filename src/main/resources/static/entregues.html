@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pedidos Entregues · Pizzaria Forno</title>
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+<nav class="nav"></nav>
+<main>
+  <header class="page-header">
+    <h1>Pedidos entregues</h1>
+    <p>Lista de pedidos entregues entre duas datas.</p>
+  </header>
+
+  <section class="card">
+    <div class="row">
+      <div class="field"><label for="inicio">Data inicial</label>
+        <input class="input" type="text" id="inicio" lang="pt-BR" placeholder="dd/mm/aaaa" autocomplete="off"></div>
+      <div class="field"><label for="fim">Data final</label>
+        <input class="input" type="text" id="fim" lang="pt-BR" placeholder="dd/mm/aaaa" autocomplete="off"></div>
+    </div>
+    <button class="btn btn-primary" id="buscarBtn">Buscar</button>
+  </section>
+
+  <section class="card">
+    <div id="resultado"></div>
+  </section>
+</main>
+<footer>© <span id="yr"></span> Pizzaria Forno</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>

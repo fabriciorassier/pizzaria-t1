@@ -1,0 +1,63 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Status do Pedido - Pizzaria Forno</title>
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="nav"></nav>
+<main>
+  <header class="page-header">
+    <h1>Acompanhar pedido</h1>
+    <p>Consulte status, pague ou cancele um pedido.</p>
+    <p id="lastOrderId" class="sub"></p>
+  </header>
+
+  <section class="card">
+    <h2>Buscar por numero</h2>
+    <p class="sub">Informe o ID do pedido para consultar.</p>
+    <div class="row">
+      <div class="field">
+        <label for="pedidoId">ID do pedido</label>
+        <input class="input" id="pedidoId" placeholder="Ex: 42 (somente numero)">
+      </div>
+      <div class="field field-end">
+        <button class="btn btn-primary" id="buscarBtn">Consultar</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="pedidoSection" class="card hidden-section">
+    <div class="flex status-head">
+      <div>
+        <h2>Pedido <span id="poId"></span></h2>
+        <p class="sub" id="poMsg"></p>
+      </div>
+      <span class="status-badge" id="poStatus">-</span>
+    </div>
+
+    <div class="summary">
+      <div class="summary-item"><div class="lbl">Custo dos itens</div><div class="val" id="poCustoItens">-</div></div>
+      <div class="summary-item"><div class="lbl">Desconto</div><div class="val" id="poDesconto">-</div></div>
+      <div class="summary-item"><div class="lbl">Imposto</div><div class="val" id="poImposto">-</div></div>
+      <div class="summary-item total"><div class="lbl">Total</div><div class="val" id="poTotal">-</div></div>
+    </div>
+
+    <div id="poExtra"></div>
+
+    <div class="actions">
+      <button class="btn btn-success" id="pagarBtn">Pagar pedido</button>
+      <button class="btn btn-danger" id="cancelarBtn">Cancelar pedido</button>
+      <button class="btn btn-ghost" id="atualizarBtn">Atualizar status</button>
+    </div>
+  </section>
+</main>
+<footer>© <span id="yr"></span> Pizzaria Forno</footer>
+
+<script src="js/scripts.js"></script>
+</body>
+</html>
+

@@ -10,6 +10,7 @@ public class StatusPedido {
     public static final String TRANSPORTE = "TRANSPORTE";
     public static final String ENTREGUE = "ENTREGUE";
     public static final String CANCELADO = "CANCELADO";
+    public static final String ABANDONADO = "ABANDONADO";
 
     private StatusPedido() {
     }

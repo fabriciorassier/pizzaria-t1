@@ -23,6 +23,13 @@ public class ConsultarStatusPedidoUC {
         if (pedido == null) {
             return null;
         }
-        return new StatusPedidoResponse(pedido.getId(), pedido.getStatus(), LocalDateTime.now());
+        return new StatusPedidoResponse(
+            pedido.getId(),
+            pedido.getStatus(),
+            LocalDateTime.now(),
+            pedido.getCustoItens(),
+            pedido.getDesconto(),
+            pedido.getImposto(),
+            pedido.getCustoTotal());
     }
 }

@@ -7,6 +7,10 @@ create table if not exists clientes(
   senha varchar(255) not null default 'sem-senha'
 );
 
+alter table clientes add column if not exists email varchar(255);
+alter table clientes add column if not exists senha varchar(255) default 'sem-senha';
+create unique index if not exists uq_clientes_email on clientes(email);
+
 create table if not exists ingredientes (
   id bigint primary key,
   descricao varchar(255) not null

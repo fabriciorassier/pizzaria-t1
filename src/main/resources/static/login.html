@@ -1,0 +1,34 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Entrar - Pizzaria Forno</title>
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="nav"></nav>
+<div class="auth-wrap">
+  <form class="auth-card" id="loginForm" novalidate>
+    <div class="brand"><img class="brand-logo" src="img/logo.svg" alt="Logo"> Pizzaria Forno</div>
+    <h1>Bem-vindo de volta</h1>
+    <p class="sub">Entre para fazer seu pedido</p>
+
+    <div class="field">
+      <label for="email">E-mail</label>
+      <input class="input" type="email" id="email" autocomplete="email" required placeholder="nome@exemplo.com">
+    </div>
+    <div class="field">
+      <label for="senha">Senha</label>
+      <input class="input" type="password" id="senha" autocomplete="current-password" required minlength="4" placeholder="Digite sua senha">
+    </div>
+    <button class="btn btn-primary btn-block" id="submitBtn" type="submit">Entrar</button>
+    <p class="alt">Nao tem conta? <a href="registrar.html">Criar conta</a></p>
+  </form>
+</div>
+
+<script src="js/scripts.js"></script>
+</body>
+</html>
+

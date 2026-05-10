@@ -1,58 +1,48 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tele Pizza - Login</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="/styles.css" rel="stylesheet" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pizzaria Forno - Sabor que chega rápido</title>
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="container py-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="card p-4">
-          <h1 class="h3 mb-3">Tele <span class="brand-accent">Pizza</span></h1>
-          <div id="msg" class="alert d-none"></div>
-          <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input id="email" type="email" class="form-control" placeholder="Digite seu email" title="Email" />
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Senha</label>
-            <input id="senha" type="password" class="form-control" placeholder="Digite sua senha" title="Senha" />
-          </div>
-          <button id="entrar" class="btn btn-pizza w-100">Entrar</button>
-          <a class="link-light mt-3" href="/cadastro.html">Ainda não tem conta? Cadastre-se</a>
-        </div>
+<nav class="nav"></nav>
+<main>
+  <section class="hero">
+    <div>
+      <h1>Sua pizza <span class="accent">favorita</span><br>em poucos cliques.</h1>
+      <p>Consulte o cardápio, acompanhe o status do pedido e visualize entregues por período ou por cliente. Tudo em um fluxo simples, direto e rápido.</p>
+      <div class="hero-cta">
+        <a href="cardapio.html" class="btn btn-primary">🍕 Ver cardápio</a>
+        <a href="status.html" class="btn btn-ghost">📦 Acompanhar pedido</a>
       </div>
     </div>
-  </div>
-  <script src="/app.js"></script>
-  <script>
-    document.getElementById('entrar').addEventListener('click', async () => {
-      try {
-        const resp = await fetch(API + '/clientes/login', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-            email: document.getElementById('email').value,
-            senha: document.getElementById('senha').value
-          })
-        });
-        const data = await resp.json();
-        if (!resp.ok) {
-          showMessage('msg', data.erro || 'Falha no login', 'danger');
-          return;
-        }
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('cpf', data.cpf);
-        localStorage.setItem('nome', data.nome);
-        window.location.href = '/cardapio.html';
-      } catch (e) {
-        showMessage('msg', 'Erro ao conectar com backend', 'danger');
-      }
-    });
-  </script>
+    <div class="hero-art" aria-hidden="true"></div>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <div class="ico">🍕</div><h3>Cardápio</h3>
+      <p>Veja os itens disponíveis, preços e monte seu pedido com quantidades.</p>
+    </div>
+    <div class="feature">
+      <div class="ico">📦</div><h3>Status do Pedido</h3>
+      <p>Consulte o andamento por número do pedido e atualize quando quiser.</p>
+    </div>
+    <div class="feature">
+      <div class="ico">📅</div><h3>Entregues</h3>
+      <p>Liste os pedidos entregues entre duas datas para conferência rápida.</p>
+    </div>
+    <div class="feature">
+      <div class="ico">👤</div><h3>Por Cliente</h3>
+      <p>Filtre pedidos entregues de um cliente específico usando CPF e período.</p>
+    </div>
+  </section>
+</main>
+<footer>© <span id="yr"></span> Pizzaria Forno</footer>
+
+<script src="js/scripts.js"></script>
 </body>
 </html>

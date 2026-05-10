@@ -864,3 +864,12 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/Fabrici
 	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
 	... 105 more
+2026-05-09 23:24:12.040177-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARDAPIO_CORRENTE" not found (this database is empty); SQL statement:
+SELECT cardapio_id FROM cardapio_corrente WHERE id = 1 [42104-232]
+2026-05-09 23:24:21.378510-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PEDIDOS" not found (this database is empty); SQL statement:
+SELECT id, cliente_cpf, status, endereco_entrega, data_pedido, custo_itens, desconto, imposto, custo_total FROM pedidos WHERE status = ? AND data_pedido >= ? AND data_pedido < ? ORDER BY data_pedido [42104-232]
+2026-05-09 23:45:05.783465-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CLIENTES" not found (this database is empty); SQL statement:
+SELECT COUNT(*) FROM clientes WHERE email = ? [42104-232]

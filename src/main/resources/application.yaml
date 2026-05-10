@@ -6,9 +6,9 @@ spring:
     password:
   sql:
     init:
-      mode: always   # executa schema.sql no boot
-    schema-locations: classpath:schema.sql
-    data-locations: classpath:data.sql
+      mode: always
+      schema-locations: classpath:db/schema.sql
+      data-locations: classpath:db/data.sql
   h2:
     console:
       enabled: true

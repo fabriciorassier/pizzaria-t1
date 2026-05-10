@@ -2,54 +2,9 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tele Pizza - Pedido</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="/styles.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="refresh" content="0; url=cardapio.html" />
+  <title>Redirecionando...</title>
 </head>
-<body>
-  <div class="container py-4">
-    <h1 class="h3 mb-3">Seu Pedido</h1>
-    <div id="msg" class="alert d-none"></div>
-    <ul id="itens" class="list-group mb-3"></ul>
-    <div class="mb-3">
-      <label class="form-label">Endereço de entrega</label>
-      <input id="endereco" class="form-control" placeholder="Rua, número" />
-    </div>
-    <button id="submeter" class="btn btn-pizza">Submeter pedido</button>
-    <a href="/acompanhamento.html" class="btn btn-outline-light">Acompanhar pedido</a>
-  </div>
-  <script src="/app.js"></script>
-  <script>
-    ensureAuth();
-    const carrinho = JSON.parse(localStorage.getItem('carrinho') || '[]');
-    const ul = document.getElementById('itens');
-    carrinho.forEach(i => {
-      const li = document.createElement('li');
-      li.className = 'list-group-item';
-      li.textContent = i.descricao + ' x ' + i.quantidade;
-      ul.appendChild(li);
-    });
-
-    document.getElementById('submeter').addEventListener('click', async () => {
-      const body = {
-        enderecoEntrega: document.getElementById('endereco').value,
-        itens: carrinho.map(i => ({produtoId: i.produtoId, quantidade: i.quantidade}))
-      };
-      const resp = await fetch(API + '/pedidos/submeter', {
-        method: 'POST',
-        headers: authHeaders(true),
-        body: JSON.stringify(body)
-      });
-      const data = await resp.json();
-      if (!resp.ok) {
-        showMessage('msg', data.erro || 'Erro ao submeter pedido', 'danger');
-        return;
-      }
-      localStorage.setItem('ultimoPedidoId', data.pedidoId);
-      localStorage.removeItem('carrinho');
-      showMessage('msg', data.mensagem + ' Pedido #' + data.pedidoId, 'success');
-    });
-  </script>
-</body>
+<body></body>
 </html>
