@@ -22,8 +22,9 @@ public class CozinhaServiceSimulado implements ICozinhaService {
         /* A simulacao roda em background para nao bloquear o endpoint de pagamento. */
         Thread thread = new Thread(() -> {
             try {
+                Thread.sleep(5000);
                 pedidoRepository.atualizarStatus(pedidoId, StatusPedido.AGUARDANDO);
-                Thread.sleep(3000);
+                Thread.sleep(5000);
                 pedidoRepository.atualizarStatus(pedidoId, StatusPedido.PREPARACAO);
                 Thread.sleep(5000);
                 pedidoRepository.atualizarStatus(pedidoId, StatusPedido.PRONTO);
