@@ -22,5 +22,12 @@ logging:
       bcopstein: DEBUG
 application:
   name: ex4-lancheriaddd-v1
+precos:
+  estrategia-imposto: taxa-fixa
+  estrategia-desconto: fidelidade
+  taxa-imposto: 0.10
+  percentual-desconto-fidelidade: 0.07
+  minimo-pedidos-fidelidade: 3
+  janela-dias-fidelidade: 20
 server:
   port: 8080
